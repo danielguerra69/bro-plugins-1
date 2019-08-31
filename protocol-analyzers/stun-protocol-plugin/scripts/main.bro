@@ -23,7 +23,7 @@ redef record connection += {
 const ports = { 3478/udp };
 redef likely_server_ports += { ports };
 
-event bro_init() &priority=5
+event zeek_init() &priority=5
 	{
 	Log::create_stream(STUN::LOG, [$columns=Info, $ev=log_stun, $path="stun"]);
 	Analyzer::register_for_ports(Analyzer::ANALYZER_STUN_UDP, ports);
