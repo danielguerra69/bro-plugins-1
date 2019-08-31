@@ -39,7 +39,7 @@ redef record connection += {
 global ssdp_uid_cache: set[string];
 const ports = { 1900/udp };
 
-event bro_init() &priority=5
+event zeek_init() &priority=5
 	{
 	Log::create_stream(SSDP::LOG, [$columns=Info, $ev=log_ssdp]);
 	Analyzer::register_for_ports(Analyzer::ANALYZER_SSDP, ports);
