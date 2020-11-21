@@ -2,24 +2,22 @@
 #include "STUN_UDP.h"
 #include "STUN_UDP_MAGIC.h"
 
-namespace plugin {
-namespace Bro_STUN {
+namespace zeek::plugin::detail::Zeek_STUN {
 
-class Plugin : public plugin::Plugin {
+class Plugin : public zeek::plugin::Plugin {
 public:
-	zeek::plugin::Configuration Configure()
+	zeek::plugin::Configuration Configure() override
 		{
-		AddComponent(new ::analyzer::Component("STUN_UDP", ::analyzer::STUN_UDP::STUN_Analyzer::InstantiateAnalyzer));
-		AddComponent(new ::analyzer::Component("STUN_UDP_MAGIC", ::analyzer::STUN_UDP_MAGIC::STUN_Analyzer::InstantiateAnalyzer));
+		AddComponent(new zeek::analyzer::Component("STUN_UDP", zeek::analyzer::STUN_UDP::STUN_Analyzer::InstantiateAnalyzer));
+		AddComponent(new zeek::analyzer::Component("STUN_UDP_MAGIC", zeek::analyzer::STUN_UDP_MAGIC::STUN_Analyzer::InstantiateAnalyzer));
 
 		plugin::Configuration config;
-		config.name = "Bro::STUN";
+		config.name = "Zeek::STUN";
 		config.description = "STUN protocol analyzer";
-		config.version.major = 0;
+		config.version.major = 1;
 		config.version.minor = 1;
 		return config;
 		}
 } plugin;
 
-}
 }
