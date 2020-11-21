@@ -7,7 +7,7 @@ namespace Bro_STUN {
 
 class Plugin : public plugin::Plugin {
 public:
-	plugin::Configuration Configure()
+	zeek::plugin::Configuration Configure()
 		{
 		AddComponent(new ::analyzer::Component("STUN_UDP", ::analyzer::STUN_UDP::STUN_Analyzer::InstantiateAnalyzer));
 		AddComponent(new ::analyzer::Component("STUN_UDP_MAGIC", ::analyzer::STUN_UDP_MAGIC::STUN_Analyzer::InstantiateAnalyzer));
